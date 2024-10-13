@@ -3,7 +3,7 @@ from langchain_groq import ChatGroq
 import os
 
 
-API_KEY = os.environ.get("API_TOKEN", "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")
+API_KEY = os.environ.get("API_TOKEN", "CHAT GROQ API KE")
 llm = None
 
 
