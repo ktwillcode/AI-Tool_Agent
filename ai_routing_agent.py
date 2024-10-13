@@ -9,7 +9,7 @@ from langchain_groq import ChatGroq
 from tools import llm_text_summarizer, llm_text_funifier, multiplication_tool, vowel_counter
 
 # Set the API key here or ensure it's set in the environment
-API_KEY = os.environ.get("API_TOKEN", "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")
+API_KEY = os.environ.get("API_TOKEN", "CHAT GROQ API KEY")
 
 # Define State using TypedDict
 class State(TypedDict):
@@ -116,7 +116,7 @@ class Assistant:
 
 # Defining the CLI for user interaction
 def run_cli():
-    print("Welcome to the Mycroft AI Routing Agent CLI!")
+    print("Welcome to the AI Routing Agent CLI!")
     print("You can ask me to do one of the following:")
     print("1. Summarize text")
     print("2. Make text funnier")
@@ -134,7 +134,7 @@ def run_cli():
         user_input = input("\nYou: ").strip()
 
         if user_input.lower() == 'exit':
-            print("Thank you for using Mycroft AI Routing Agent. Made By Kartikeya Tripathi Goodbye!")
+            print("Thank you for using AI Routing Agent. Made By Kartikeya Tripathi Goodbye!")
             break
 
         # Prepare the input for the runnable
