@@ -1,13 +1,26 @@
-from langchain.prompts import PromptTemplate
-from langchain.llms import OpenAI
+from langchain_core.tools import tool
+from langchain_groq import ChatGroq
+import os
 
-class TextFunifier:
-    def __init__(self):
-        self.llm = OpenAI(temperature=0.7)
-        self.prompt = PromptTemplate(
-            input_variables=["text"],
-            template="Make the following text funnier while retaining its original meaning:\n\n{text}\n\nFunny version:"
-        )
 
-    def funify(self, text: str) -> str:
-        return self.llm(self.prompt.format(text=text))
+API_KEY = os.environ.get("API_TOKEN", "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")
+
+
+llm = None
+@tool
+def initialize_llm(api_key: str):
+    """Initialize the LLM with the provided API key.
+
+    Args:
+        api_key (str): The API key for accessing the language model.
+    """
+    global llm
+    llm = ChatGroq(temperature=0, model_name="mixtral-8x7b-32768", api_key=api_key)
+    return "LLM initialized successfully."
+initialize_llm(API_KEY)
+@tool
+def llm_text_funifier(text: str) -> str:
+    """Make the given text funnier while retaining its original meaning."""
+    prompt = f"Make the following text funnier while retaining its original meaning(add humor to the textEnsure the output is coherent and contextually appropriat):\n\n{text}"
+    response = llm.invoke(prompt)
+    return response.content
