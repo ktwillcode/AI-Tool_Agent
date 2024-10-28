@@ -11,9 +11,6 @@ from tools import llm_text_summarizer, llm_text_funifier, multiplication_tool, v
 # Set the API key here or ensure it's set in the environment
 API_KEY = os.environ.get("API_TOKEN", "CHAT GROQ API KEY")
 
-# Define State using TypedDict
-class State(TypedDict):
-    messages: Annotated[list, "add_messages"]
 
 # Create the primary assistant prompt
 primary_assistant_prompt = ChatPromptTemplate.from_messages(
