@@ -48,18 +48,7 @@ tools = [
 def initialize_runnable(llm):
     return primary_assistant_prompt | llm.bind_tools(tools)
 
-# Implement a simple in-memory checkpointer
-class SimpleCheckpointer:
-    def __init__(self):
-        self.state = {}
 
-    def save(self, state):
-        self.state = state
-
-    def load(self):
-        return self.state
-
-memory = SimpleCheckpointer()
 
 
 # Define the Assistant class
