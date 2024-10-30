@@ -1,4 +1,5 @@
 import os
+
 from datetime import datetime
 from typing import Annotated, TypedDict
 
@@ -26,7 +27,8 @@ primary_assistant_prompt = ChatPromptTemplate.from_messages(
             "and route the request to the appropriate tool. For multiplication, convert number "
             "words to digits and extract all numbers. For text-based tools, identify the "
             "relevant text to process. Current time: {time}. "
-            "If the user's input does not match any of these tasks, respond with: 'Please specify which task you want from the following options: multiply, summarize, funnier, or vowel count.' ",
+            "If the user's input does not match any of these tasks, respond with:"
+            "'Please specify which task you want from the following options: multiply, summarize, funnier, or vowel count.' ",
         ),
         ("placeholder", "{messages}"),
     ]
@@ -63,7 +65,7 @@ class Assistant:
             # Check for tool calls
             tool_calls = result.additional_kwargs.get('tool_calls', [])
             
-            # If no tool calls were made, provide a not relevant response
+            # If no tool calls were made, provide a not-relevant response
             if not tool_calls:
                 result.content = "Not relevant. I can do four things: multiply numbers, count vowels, summarize text, and make text funnier."
                 break
@@ -94,7 +96,7 @@ class Assistant:
                         vowel_count = vowel_counter.invoke(input={"text": text_to_count})  
                         result.content = f"The number of vowels in the text is {vowel_count}."
 
-            # Add the generated message to state
+            
             break
 
         return {"messages": state["messages"] + [{"role": "assistant", "content": result.content}]}
