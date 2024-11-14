@@ -1,6 +1,6 @@
 # AI Routing Agent by KT
 
-AI Routing Agent is a command-line interface (CLI) application that uses an AI to route user queries to appropriate tools for processing. It uses the LangChain library and the Groq LLM API to provide intelligent responses and perform various tasks.
+AI Routing Agent is a command-line interface (CLI) application that uses an AI(LLM) to route user queries to appropriate tools for processing. It uses the LangChain library and the Groq LLM API to provide intelligent responses and perform various tasks.
 
 ## Features
 
